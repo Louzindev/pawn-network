@@ -1,209 +1,108 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap');
 
-body {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
-  background-color: #fafafa;
 }
 
-h1 {
-  margin-top: 40px;
-  margin-bottom: 20px;
-  font-size: 24px;
+body {
+  background-color: #f2f2f2;
+}
+
+header {
+  background-color: #333;
+  padding: 2vh;
+}
+
+.toggle-modenoturn {
+  padding-left: 2vh;
+}
+
+.toggle-modenoturn span{
+  font-size: 4vh;
+}
+
+.material-symbols-outlined {
+  color: #fff;
+}
+
+.container-main {
+  max-width: 60vh;
+  height: max-content;
+  margin: 0 auto;
+  margin-top: 15vh;
+  background-color: #fff;
+  border-radius: 2vh;
+  padding: 2vh;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.container-main h1 {
+  font-size: 3vh;
+  margin: 0;
+  padding: 0;
+}
+
+.container-main h1 a {
+  text-decoration: none;
   color: #333;
 }
 
-a {
-  color: #3897f0;
+.container p {
+  font-size: 18px;
+  color: #555;
+  padding-top: 10vh;
+  text-align: center;
+}
+
+a{
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
+.button-indexpage {
+  text-align: center;
+  margin-top: 10vh;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-}
-
-input[type="text"],
-input[type="password"],
-textarea {
-  width: 280px;
-  height: 36px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  background-color: #fff;
-  margin-bottom: 10px;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus,
-textarea:focus {
-  outline: none;
-  box-shadow: 0 0 5px #3897f0;
-}
-
-input[type="text"],
-input[type="password"] {
-  width: 280px;
-  height: 36px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  background-color: #fff;
-  margin-bottom: 10px;
-}
-
-button[type="submit"] {
-  width: 280px;
-  height: 36px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #3897f0;
+.register-button,
+.login-button {
+  display: inline-block;
+  margin: 10px;
+  padding: 15px 30px;
+  background-color: #333;
   color: #fff;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-button[type="submit"],
-button {
-  width: 280px;
-  height: 36px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #3897f0;
-  color: #fff;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover,
-button:hover {
-  background-color: #3366cc;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-}
-
-.welcome {
-  margin: 0;
-}
-
-.buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.publish-button {
-  background-color: #4caf50;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  text-decoration: none;
-}
-
-.logout-button {
-  background-color: #f44336;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  text-decoration: none;
-}
-
-.post p {
-  margin: 0;
-  color: #999;
-}
-
-.post p:first-child {
-  font-weight: bold;
-  color: black;
-}
-
-.post p:nth-child(2) {
-  color: #999;
-}
-
-.post p:nth-child(3) {
-  margin-top: 5px;
-  color: #3897f0;
-}
-
-.post {
-  background-color: #fff;
-  border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 10px;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 400px;
+  transition: background-color 0.2s;
 }
 
-.post p {
-  margin: 5px 0;
-  text-align: center;
-  word-break: break-word;
-}
-
-.post .post-user {
-  font-weight: bold;
-}
-
-.post .post-content {
-  padding: 10px 0;
-  overflow: hidden;
-  white-space: normal;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
-
-.login-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.login-form input[type="text"],
-.login-form input[type="password"] {
-  width: 280px;
-  height: 36px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  background-color: #fff;
-  margin-bottom: 10px;
-}
-
-.login-form button[type="submit"] {
-  width: 280px;
-  height: 36px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #3897f0;
+.register-button a,
+.login-button a {
   color: #fff;
-  font-size: 14px;
+}
+
+.register-button:hover,
+.login-button:hover{
+  background-color: #555;
+}
+
+.material-symbols-outlined:hover{
   cursor: pointer;
+  color: #c7c7c7;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 2.5vh;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer p {
+  margin: 0;
+  padding: 0;
 }
