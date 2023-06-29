@@ -16,6 +16,8 @@ header {
   padding: 2vh;
 }
 
+/*---------------------------------------------------*/
+
 .toggle-modenoturn {
   padding-left: 2vh;
 }
@@ -43,10 +45,6 @@ header {
   font-size: 3vh;
   margin: 0;
   padding: 0;
-}
-
-.container-main h1 a {
-  text-decoration: none;
   color: #333;
 }
 
@@ -105,4 +103,140 @@ a{
 .footer p {
   margin: 0;
   padding: 0;
+}
+
+/*---------------------------------------------------*/
+
+.container-login {
+  max-width: 60vh;
+  height: 55vh;
+  margin: 0 auto;
+  margin-top: 15vh;
+  background-color: #fff;
+  border-radius: 2vh;
+  padding: 2vh;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.container-login h1 {
+
+  font-size: 3vh;
+  padding-top: 1vh;
+  color: #333;
+}
+
+.container-login p {
+  font-size: 18px;
+  color: #555;
+  padding-top: 1vh;
+  text-align: center;
+}
+
+.form form .inputs-login{
+  margin-top: 2vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.form form .input-login{
+  padding-top: 3vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.form form .button-login{
+  display: flex;
+  justify-content: center;
+  padding-top: 4vh;
+}
+
+.redirectpage-login{
+  margin-top: 2.5vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.redirectpage-login a{
+  text-decoration: underline;
+}
+
+/*---------------------------------------------------*/
+.container-register {
+  max-width: 60vh;
+  height: 63vh;
+  margin: 0 auto;
+  margin-top: 10vh;
+  background-color: #fff;
+  border-radius: 2vh;
+  padding: 2vh;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.container-register h1 {
+  font-size: 3vh;
+  padding-top: 1vh;
+  color: #333;
+}
+
+.container-register p {
+  font-size: 18px;
+  color: #555;
+  padding-top: 1vh;
+  text-align: center;
+}
+
+.form form .inputs-register{
+  margin-top: 1vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.form form .input-register{
+  padding-top: 3vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.form form label{
+  color: #333;
+  font-size: 2.5vh;
+}
+
+.form form input{
+  font-size: 1.8vh;
+  padding-left: 1vh;
+  height: 5vh;
+  border-radius: 1vh;
+  border: 0.1px solid;
+}
+
+.form form .button-register{
+  display: flex;
+  justify-content: center;
+  padding-top: 4vh;
+}
+
+.form form button{
+  font-size: 1.9vh;
+  width: 30vh;
+  height: 5vh;
+  background-color: #217c1e;
+  color: #fff;
+  border: none;
+  border-radius: 1vh;
+}
+
+.form form button:hover{
+  cursor: pointer;
+  background-color: #1c6b19;
+}
+
+.redirectpage-register{
+  margin-top: 2.5vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.redirectpage-register a{
+  text-decoration: underline;
 }
