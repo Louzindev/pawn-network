@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Painel</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1 class="welcome">Welcome, {{ username }}!</h1>
+        <div class="buttons">
+            <a href="{{ url_for('new_post') }}" class="publish-button">Publicar</a>
+            <a href="{{ url_for('logout') }}" class="logout-button">Sair</a>
+        </div>
+    </div>
+    <hr>
+    <h1>Lastest Posts</h1>
+    <div class="posts">
+        {% for post in posts %}
+            <div class="post post-border">
+                <p>User: {{ post[2] }}</p>
+                <div class="post-content">
+                    <p>Content: {{ post[0] }}</p>
+                </div>
+                <p>Date: {{ post[1] }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

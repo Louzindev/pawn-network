@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>New Post</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        textarea {
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="{{ url_for('create_post') }}">
+        <label for="content">Publicar novo conteúdo:</label>
+        <textarea name="content" id="content" placeholder="Write your post here" style="height: 300px; width: 700px;" required maxlength="1500"></textarea>
+        <label for="content">Content:</label>
+        <textarea name="content" id="content" placeholder="Write your post here" style="height: 300px; width: 700px;" required maxlength="1500"></textarea>
+        <button type="submit">Publish</button>
+    </form>
+</body>
+</html>
