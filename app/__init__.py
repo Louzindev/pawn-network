@@ -90,7 +90,7 @@ def create_post():
         conn = mysql.connect()
         cursor = conn.cursor()
 
-        cursor.execute("SELECT id FROM users WHERE username = %s", (username,))
+        cursor.execute("SELECT id FROM users WHERE username = %s", (username))
         user_id = cursor.fetchone()[0]
 
         cursor.execute("INSERT INTO posts (user_id, content, created_at) VALUES (%s, %s, NOW())", (user_id, content))
