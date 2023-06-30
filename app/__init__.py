@@ -21,20 +21,21 @@ def index():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
+        email = request.form['email']
         username = request.form['username']
         password = request.form['password']
 
         conn = mysql.connect()
         cursor = conn.cursor()
 
-        cursor.execute("SELECT * FROM users WHERE username = %s", (username))
+        cursor.execute("SELECT * FROM users WHERE username = %s OR email = %s", (username, email))
         existing_user = cursor.fetchone()
 
         if existing_user:
-            error = 'Username already exists.'
+            error = 'Este nome de usuário ou e-mail já estão registrados.'
             return render_template('register.html', error=error)
 
-        cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)", (username, password))
+        cursor.execute("INSERT INTO users (username, password, email) VALUES (%s, %s, %s)", (username, password, email))
         conn.commit()
         cursor.close()
 
@@ -50,7 +51,7 @@ def login():
 
         conn = mysql.connect()
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM users WHERE username = %s AND password = %s", (username, password))
+        cursor.execute("SELECT * FROM users WHERE username = %s OR email = %s AND password = %s", (username, username, password))
         user = cursor.fetchone()
         cursor.close()
 
@@ -58,7 +59,7 @@ def login():
             session['username'] = username
             return redirect('/dashboard')
         else:
-            return render_template('login.html', error='Username or password is invalid.')
+            return render_template('login.html', error='Usuário/email ou senha estão incorretos.')
     return render_template('login.html')
 
 @app.route('/logout')
