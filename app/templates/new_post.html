@@ -6,31 +6,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>New Post</title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 
 <body>
-  <h1>New Post</h1>
-  <div class="container-newpost">
-    <form method="post" action="{{ url_for('create_post') }}">
-      <div class="form-group">
-        <label for="title">Title:</label>
-        <input type="text" name="title" id="title" placeholder="Enter the title" required>
-      </div>
+  <header>
+    <div class="header-dashboard">
+        <span class="material-symbols-outlined" id="manage_accounts">manage_accounts</span>
+        <button class="publish-button"><a href="{{ url_for('new_post') }}">+</a></button>
+        <div class="buttons-interaction-dashboard">
+            <div class="button-interaction-dashboard">
+                <div class="login-button-dashboard">
+                    <a href="{{ url_for('login') }}">Logar</a>
+                </div>
+            </div>
+            <div class="button-interaction-dashboard">
+                <div class="register-button-dashboard">
+                    <a href="{{ url_for('register') }}">Registrar</a>
+                </div>
+            </div>
+            <div class="button-interaction-dashboard">
+                <div class="logout-button-dashboard">
+                    <a href="{{ url_for('logout') }}">Deslogar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </header>
 
-      <div class="form-group">
-        <label for="content">Content:</label>
-        <textarea name="content" id="content" placeholder="Write your post here" required
-          maxlength="1500"></textarea>
-      </div>
+  <main>
+    <div class="container-newpost">
+      <h1>Publicar novo conteúdo</h1>
+      <form method="post" action="{{ url_for('create_post') }}">
+        <div class="form-group">
+          <label for="title">Título:</label>
+          <input type="text" name="title" id="title" placeholder="Título" required>
+        </div>
 
-      <div class="form-group">
-        <label for="author">Author:</label>
-        <input type="text" name="author" id="author" placeholder="Enter your name" required>
-      </div>
+        <div class="form-group">
+          <label for="content">Conteúdo:</label>
+          <textarea name="content" id="content" placeholder="Escreva seu post aqui" required
+            maxlength="1500"></textarea>
+        </div>
+        <div class="btn-newpost">
+          <button class="btn-cancel" type="submit">Cancelar</button>
+          <button class="btn-publish" type="submit">Publicar</button>
+        </div>
+      </form>
+    </div>
+  </main>
 
-      <button class="btn" type="submit">Publish</button>
-    </form>
-  </div>
+  <footer>
+    <div class="footer">
+        <p>&copy; 2023 Pawn Network. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 
 </html>
