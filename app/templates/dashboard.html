@@ -11,22 +11,40 @@
     <header>
         <div class="header-dashboard">
             <span class="material-symbols-outlined" id="manage_accounts">manage_accounts</span>
-            <button class="logout-button"><a href="{{ url_for('logout') }}">Deslogar</a></button>
+            <button class="publish-button"><a href="{{ url_for('new_post') }}">+</a></button>
+            <div class="buttons-interaction-dashboard">
+                <div class="button-interaction-dashboard">
+                    <div class="login-button-dashboard">
+                        <a href="{{ url_for('login') }}">Logar</a>
+                    </div>
+                </div>
+                <div class="button-interaction-dashboard">
+                    <div class="register-button-dashboard">
+                        <a href="{{ url_for('register') }}">Registrar</a>
+                    </div>
+                </div>
+                <div class="button-interaction-dashboard">
+                    <div class="logout-button-dashboard">
+                        <a href="{{ url_for('logout') }}">Deslogar</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
     <main>
-        <button class="publish-button"><a href="{{ url_for('logout') }}">publish</a></button>
         <div class="container-dashboard">
             <h1>Últimas postagens</h1>
             <div class="posts">
                 {% for post in posts %}
-                    <div class="post post-border">
-                        <p>User: <span>{{ post[2] }}</span></p>
-                        <p>Content: <span>{{ post[0] }}</span></p>
-                        <p>Date: <span>{{ post[1] }}</span></p>
+                    <div class="post">
+                        <span>{{ post[0] }}.</span>
+                        <span><a href="">{{ post[1] }}</a></span>
+                        <div class="sub-content-post">
+                            <span><a href="">{{ post[2] }}</a> -</span>
+                            <span>em {{ post[3] }}</span>
+                        </div>
                     </div>
                 {% endfor %}
-                <hr>
             </div>
         </div>
     </main>
