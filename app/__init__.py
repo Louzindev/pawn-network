@@ -87,7 +87,7 @@ def dashboard():
         conn = mysql.connect()
         cursor = conn.cursor()
 
-        cursor.execute("SELECT posts.content, posts.created_at, users.username FROM posts JOIN users ON posts.user_id = users.id ORDER BY posts.created_at DESC")
+        cursor.execute("SELECT posts.id, posts.title, users.username, posts.created_at, posts.content FROM posts JOIN users ON posts.user_id = users.id ORDER BY posts.created_at DESC")
         posts = cursor.fetchall()
 
         cursor.close()
