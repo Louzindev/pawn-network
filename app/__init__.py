@@ -3,7 +3,7 @@ from flaskext.mysql import MySQL
 from datetime import datetime
 import re
 import secrets
-import security
+from utils import security
 
 
 app = Flask(__name__)
