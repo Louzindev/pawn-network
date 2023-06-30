@@ -20,6 +20,9 @@ def index():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    if 'username' in session:
+        return redirect('/dashboard')
+    
     if request.method == 'POST':
         email = request.form['email']
         username = request.form['username']
@@ -45,6 +48,9 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if 'username' in session:
+        return redirect('/dashboard')
+    
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
