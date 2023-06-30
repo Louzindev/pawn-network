@@ -1,19 +1,28 @@
 from flask import Flask, render_template, request, redirect, session
 from flaskext.mysql import MySQL
+from datetime import datetime
 import re
 import secrets
-from datetime import datetime
+import bcrypt
+
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
+
+
 mysql = MySQL()
-
-
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = ''
 app.config['MYSQL_DATABASE_DB'] = 'social'
 mysql.init_app(app)
+
+
+def hash_password(password):
+    salt = bcrypt.gensalt()
+    hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
+    return hashed_password.decode('utf-8')
+
 
 @app.route('/')
 def index():
@@ -41,7 +50,8 @@ def register():
                 error = 'Este nome de usuário ou e-mail já estão registrados.'
                 return render_template('register.html', error=error)
 
-            cursor.execute("INSERT INTO users (username, password, email) VALUES (%s, %s, %s)", (username, password, email))
+            hashed_password = hash_password(password)
+            cursor.execute("INSERT INTO users (username, password, email) VALUES (%s, %s, %s)", (username, hashed_password, email))
             conn.commit()
             cursor.close()
 
@@ -56,22 +66,25 @@ def register():
 def login():
     if 'username' in session:
         return redirect('/dashboard')
-    
+
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
 
         conn = mysql.connect()
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM users WHERE username = %s OR email = %s AND password = %s", (username, username, password))
+        cursor.execute("SELECT * FROM users WHERE username = %s OR email = %s", (username, username))
         user = cursor.fetchone()
-        cursor.close()
 
         if user:
-            session['username'] = username
-            return redirect('/dashboard')
-        else:
-            return render_template('login.html', error='Usuário/email ou senha estão incorretos.')
+            hashed_password = user[2]
+            if bcrypt.checkpw(password.encode('utf-8'), hashed_password.encode('utf-8')):
+                session['username'] = username
+                cursor.close()
+                return redirect('/dashboard')
+        
+        cursor.close()
+        return render_template('login.html', error='Usuário/email ou senha estão incorretos.')
     return render_template('login.html')
 
 @app.route('/logout')
@@ -115,6 +128,7 @@ def create_post():
 @app.route('/new_post')
 def new_post():
     return render_template('new_post.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
