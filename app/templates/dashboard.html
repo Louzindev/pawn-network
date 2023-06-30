@@ -11,20 +11,22 @@
     <header>
         <div class="header-dashboard">
             <span class="material-symbols-outlined" id="manage_accounts">manage_accounts</span>
-            <h1 class="welcome">Welcome, username!</h1>
-            <button class="logout-button">Sair da Conta</button>
+            <h1 class="welcome">Welcome, {{ username }}!</h1>
+            <button class="logout-button"><a href="{{ url_for('logout') }}">logout</a></button>
         </div>
     </header>
     <main>
-        <button class="publish-button">Publicar</button>
+        <button class="publish-button"><a href="{{ url_for('logout') }}">publish</a></button>
         <div class="container-dashboard">
             <h1>Latest Posts</h1>
             <div class="posts">
-                <div class="post post-border">
-                    <p>User: <span>{{ post[2] }}</span></p>
-                    <p>Content: <span>{{ post[0] }}</span></p>
-                    <p>Date: <span>{{ post[1] }}</span></p>
-                </div>
+                {% for post in posts %}
+                    <div class="post post-border">
+                        <p>User: <span>{{ post[2] }}</span></p>
+                        <p>Content: <span>{{ post[0] }}</span></p>
+                        <p>Date: <span>{{ post[1] }}</span></p>
+                    </div>
+                {% endfor %}
                 <hr>
             </div>
         </div>
@@ -36,27 +38,3 @@
     </footer>
 </body>
 </html>
-
-
-<!--
-    <div class="header">
-        <h1 class="welcome">Welcome, {{ username }}!</h1>
-        <div class="buttons">
-            <a href="{{ url_for('new_post') }}" class="publish-button">Publicar</a>
-            <a href="{{ url_for('logout') }}" class="logout-button">Sair</a>
-        </div>
-    </div>
-    <hr>
-    <h1>Lastest Posts</h1>
-    <div class="posts">
-        {% for post in posts %}
-            <div class="post post-border">
-                <p>User: {{ post[2] }}</p>
-                <div class="post-content">
-                    <p>Content: {{ post[0] }}</p>
-                </div>
-                <p>Date: {{ post[1] }}</p>
-            </div>
-        {% endfor %}
-    </div>
--->

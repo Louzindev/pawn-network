@@ -240,3 +240,78 @@ a{
 .redirectpage-register a{
   text-decoration: underline;
 }
+
+/*---------------------------------------------------*/
+
+.welcome {
+  color: #fff;
+}
+
+.container-dashboard {
+  padding: 3vh;
+}
+
+.container-dashboard h1{
+  text-decoration: underline;
+}
+
+.posts {
+  margin-top: 2vh;
+}
+
+.post {
+  margin-bottom: 2vh;
+  padding: 2vh;
+  background-color: #333;
+  color: #fff;
+}
+
+.post span {
+  font-weight: bold;
+}
+
+.header-dashboard {
+  display: flex;
+  align-items: center;
+}
+
+#manage_accounts{
+  font-size: 4vh;
+  margin-left: 2vh;
+  margin-right: 6vh;
+}
+
+.logout-button {
+  background-color: #fff;
+  padding: 10px 16px;
+  font-size: 2vh;
+  border-radius: 1vh;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.logout-button a{
+  color: #333;
+}
+
+.publish-button a{
+  color: #fff;
+}
+
+.publish-button {
+  border-radius: 1vh;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 16px;
+  font-size: 2vh;
+  border: none;
+  cursor: pointer;
+  margin-top: 4vh;
+  margin-left: 3vh;
+}
+
+.logout-button:hover,
+.publish-button:hover{
+  background-color: #8b8b8b;
+}
