@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, session
 from flaskext.mysql import MySQL
+import re
 import secrets
 from datetime import datetime
 
@@ -24,26 +25,31 @@ def register():
         return redirect('/dashboard')
     
     if request.method == 'POST':
+        email_template = r'^[\w\.-]+@[\w\.-]+\.\w+$'
         email = request.form['email']
-        username = request.form['username']
-        password = request.form['password']
+        if re.match(email_template, email):
+            username = request.form['username']
+            password = request.form['password']
 
-        conn = mysql.connect()
-        cursor = conn.cursor()
+            conn = mysql.connect()
+            cursor = conn.cursor()
 
-        cursor.execute("SELECT * FROM users WHERE username = %s OR email = %s", (username, email))
-        existing_user = cursor.fetchone()
+            cursor.execute("SELECT * FROM users WHERE username = %s OR email = %s", (username, email))
+            existing_user = cursor.fetchone()
 
-        if existing_user:
-            error = 'Este nome de usuário ou e-mail já estão registrados.'
+            if existing_user:
+                error = 'Este nome de usuário ou e-mail já estão registrados.'
+                return render_template('register.html', error=error)
+
+            cursor.execute("INSERT INTO users (username, password, email) VALUES (%s, %s, %s)", (username, password, email))
+            conn.commit()
+            cursor.close()
+
+            session['username'] = username
+            return redirect('/dashboard')
+        else:
+            error = 'O e-mail fornecido contém um padrão inválido.'
             return render_template('register.html', error=error)
-
-        cursor.execute("INSERT INTO users (username, password, email) VALUES (%s, %s, %s)", (username, password, email))
-        conn.commit()
-        cursor.close()
-
-        session['username'] = username
-        return redirect('/dashboard')
     return render_template('register.html')
 
 @app.route('/login', methods=['GET', 'POST'])
