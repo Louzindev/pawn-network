@@ -11,14 +11,13 @@
     <header>
         <div class="header-dashboard">
             <span class="material-symbols-outlined" id="manage_accounts">manage_accounts</span>
-            <h1 class="welcome">Welcome, {{ username }}!</h1>
-            <button class="logout-button"><a href="{{ url_for('logout') }}">logout</a></button>
+            <button class="logout-button"><a href="{{ url_for('logout') }}">Deslogar</a></button>
         </div>
     </header>
     <main>
         <button class="publish-button"><a href="{{ url_for('logout') }}">publish</a></button>
         <div class="container-dashboard">
-            <h1>Latest Posts</h1>
+            <h1>Últimas postagens</h1>
             <div class="posts">
                 {% for post in posts %}
                     <div class="post post-border">

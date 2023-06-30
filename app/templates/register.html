@@ -25,25 +25,25 @@
                 <form method="post" action="{{ url_for('register') }}">
                     <div class="inputs-register">
                         <div class="input-register">
-                            <label for="email">email</label>
-                            <input type="email" name="email" placeholder="email" required>
+                            <label for="email">Email</label>
+                            <input type="email" name="email" required>
                         </div>
                         <div class="input-register">
-                            <label for="username">username</label>
-                            <input type="text" name="username" placeholder="username" required>
+                            <label for="username">Username</label>
+                            <input type="text" name="username" required>
                         </div>
                         <div class="input-register">
-                            <label for="password">password</label>
-                            <input type="password" name="password" placeholder="password" required>
+                            <label for="password">Password</label>
+                            <input type="password" name="password" required>
                         </div>
                         <div class="button-register">
-                            <button type="submit">register</button>
+                            <button type="submit">Registrar</button>
                         </div>
 
                     </div>
                 </form>
                 <div class="redirectpage-register">
-                    <p>already have an account? <a href="{{ url_for('login') }}">enter your account</a>.</p>
+                    <p>Já possui uma conta? <a href="{{ url_for('login') }}">Entre aqui</a>.</p>
                 </div>
             </div>
         </div>

@@ -19,7 +19,7 @@
 
     <main>
         <div class="container-login">
-            <h1>login</h1>
+            <h1>Login</h1>
             {% if error %}
                 <p>{{ error }}</p>
             {% endif %}
@@ -27,22 +27,22 @@
                 <form method="post" action="{{ url_for('login') }}">
                     <div class="inputs-login">
                         <div class="input-login">
-                            <label for="username">username or email</label>
-                            <input type="text" name="username" placeholder="username, email..." required>
+                            <label for="username">Usuário/Email</label>
+                            <input type="text" name="username" required>
                         </div>
                         <div class="input-login">
-                            <label for="password">password</label>
-                            <input type="password" name="password" placeholder="password" required>
+                            <label for="password">Senha</label>
+                            <input type="password" name="password" required>
                         </div>
                         <div class="button-login">
-                            <button type="submit">login</button>
+                            <button type="submit">Login</button>
                         </div>
 
                     </div>
                 </form>
                 <div class="redirectpage-login">
-                    <p>new to Pawn Network? <a href="{{ url_for('register') }}">create your account here</a>.</p>
-                    <p>forgot your password? <a href="">click here</a>.</p>
+                    <p>Novo na Pawn Network? <a href="{{ url_for('register') }}">Crie sua conta aqui</a>.</p>
+                    <p>Esqueceu a sua senha? <a href="">Clique aqui</a>.</p>
                 </div>
             </div>
         </div>
