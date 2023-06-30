@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Post</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-    <style>
-        textarea {
-            resize: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Post</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
+  <h1>New Post</h1>
+  <div class="container-newpost">
     <form method="post" action="{{ url_for('create_post') }}">
-        <label for="content">Publicar novo conteúdo:</label>
-        <textarea name="content" id="content" placeholder="Write your post here" style="height: 300px; width: 700px;" required maxlength="1500"></textarea>
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" placeholder="Enter the title" required>
+      </div>
+
+      <div class="form-group">
         <label for="content">Content:</label>
-        <textarea name="content" id="content" placeholder="Write your post here" style="height: 300px; width: 700px;" required maxlength="1500"></textarea>
-        <button type="submit">Publish</button>
+        <textarea name="content" id="content" placeholder="Write your post here" required
+          maxlength="1500"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="author">Author:</label>
+        <input type="text" name="author" id="author" placeholder="Enter your name" required>
+      </div>
+
+      <button class="btn" type="submit">Publish</button>
     </form>
+  </div>
 </body>
+
 </html>
