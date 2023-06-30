@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #f2f2f2;
+  background-color: #ffffff;
 }
 
 header {
@@ -256,23 +256,42 @@ a{
 }
 
 .posts {
-  margin-top: 2vh;
+  width: max-content;
+  margin-top: 6vh;
+  margin-left: 20vh;
 }
 
 .post {
+  margin-top: 3vh;
   margin-bottom: 2vh;
-  padding: 2vh;
-  background-color: #333;
-  color: #fff;
+  color: #333;
+  font-size: 2.6vh;
 }
 
 .post span {
   font-weight: bold;
 }
 
+.post span a{
+  color: #333;
+}
+
+.post span a:hover{
+  text-decoration: underline;
+}
+
 .header-dashboard {
   display: flex;
-  align-items: center;
+}
+
+.buttons-interaction-dashboard {
+  display: flex;
+  margin-left: 75%;
+}
+
+.button-interaction-dashboard {
+  display: flex;
+  margin-right: 2vh;
 }
 
 #manage_accounts{
@@ -281,22 +300,27 @@ a{
   margin-right: 6vh;
 }
 
-.logout-button {
-  background-color: #fff;
-  padding: 10px 16px;
+.logout-button-dashboard,
+.login-button-dashboard,
+.register-button-dashboard{
+  margin-top: 1vh;
+  margin-left: 2vh;
   font-size: 2vh;
   border-radius: 1vh;
   border: none;
   cursor: pointer;
-  margin-left: auto;
 }
 
-.logout-button a{
-  color: #333;
+.logout-button-dashboard a,
+.login-button-dashboard a,
+.register-button-dashboard a{
+  font-weight: bold;
+  color: #fff;
 }
 
 .publish-button a{
   color: #fff;
+  font-weight: bold;
 }
 
 .publish-button {
@@ -307,11 +331,71 @@ a{
   font-size: 2vh;
   border: none;
   cursor: pointer;
-  margin-top: 4vh;
-  margin-left: 3vh;
+  margin-left: -3vh;
 }
 
-.logout-button:hover,
 .publish-button:hover{
   background-color: #8b8b8b;
 }
+
+.logout-button-dashboard a:hover,
+.login-button-dashboard a:hover,
+.register-button-dashboard a:hover{
+  color: #8b8b8b;
+}
+
+.sub-content-post{
+  color: #8b8b8b;
+  margin-top: -0.1vh;
+  margin-left: 3vh;
+  font-size: 1.5vh;
+}
+
+.sub-content-post span a{
+  color: #8b8b8b;
+}
+
+/*---------------------------------*/
+
+textarea {
+  resize: none;
+}
+
+.container-newpost {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.form-group textarea {
+  height: 200px;
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
