@@ -3,7 +3,7 @@ from flaskext.mysql import MySQL
 from datetime import datetime
 import re
 import secrets
-import bcrypt
+import security
 
 
 app = Flask(__name__)
@@ -16,12 +16,6 @@ app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = ''
 app.config['MYSQL_DATABASE_DB'] = 'social'
 mysql.init_app(app)
-
-
-def hash_password(password):
-    salt = bcrypt.gensalt()
-    hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
-    return hashed_password.decode('utf-8')
 
 
 @app.route('/')
@@ -50,7 +44,7 @@ def register():
                 error = 'Este nome de usuário ou e-mail já estão registrados.'
                 return render_template('register.html', error=error)
 
-            hashed_password = hash_password(password)
+            hashed_password = security.hash_password(password)
             cursor.execute("INSERT INTO users (username, password, email) VALUES (%s, %s, %s)", (username, hashed_password, email))
             conn.commit()
             cursor.close()
@@ -78,7 +72,7 @@ def login():
 
         if user:
             hashed_password = user[2]
-            if bcrypt.checkpw(password.encode('utf-8'), hashed_password.encode('utf-8')):
+            if security.check_password(password, hashed_password):
                 session['username'] = username
                 cursor.close()
                 return redirect('/dashboard')
