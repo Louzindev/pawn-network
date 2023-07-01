@@ -104,13 +104,13 @@ a{
 
 .toggle-modenoturn-login{
   margin-top: 1vh;
-  display: flex;
-  margin-top: 1vh;
   font-size: 2.5vh;
+  margin-left: 80%;
 }
 
-.toggle-modenoturn-login{
+.toggle-modenoturn-login span{
   font-size: 2.7vh;
+  text-align: end;
 }
 
 .container-login {
