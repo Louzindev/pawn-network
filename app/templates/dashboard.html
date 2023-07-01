@@ -10,20 +10,14 @@
 <body>
     <header>
         <div class="header-dashboard">
-            <span class="material-symbols-outlined" id="manage_accounts">manage_accounts</span>
-            <button class="publish-button"><a href="{{ url_for('new_post') }}">+</a></button>
+            <div class="logo">
+                <h1 class="logoname"><a href="{{ url_for('dashboard') }}">Pawn Network</a></h1>
+            </div>
             <div class="buttons-interaction-dashboard">
                 <div class="button-interaction-dashboard">
-                    <div class="login-button-dashboard">
-                        <a href="{{ url_for('login') }}">Logar</a>
-                    </div>
-                </div>
-                <div class="button-interaction-dashboard">
-                    <div class="register-button-dashboard">
-                        <a href="{{ url_for('register') }}">Registrar</a>
-                    </div>
-                </div>
-                <div class="button-interaction-dashboard">
+                    <span class="material-symbols-outlined" id="manage_noturnmode">dark_mode</span>
+                    <button class="publish-button"><a href="{{ url_for('new_post') }}">+</a></button>
+                    <span class="material-symbols-outlined" id="manage_accounts">manage_accounts</span>
                     <div class="logout-button-dashboard">
                         <a href="{{ url_for('logout') }}">Deslogar</a>
                     </div>
