@@ -106,6 +106,7 @@ def create_post():
     if 'username' in session:
         username = session['username']
         content = request.form['content']
+        title = request.form['title']
 
         conn = mysql.connect()
         cursor = conn.cursor()
@@ -113,7 +114,7 @@ def create_post():
         cursor.execute("SELECT id FROM users WHERE username = %s", (username))
         user_id = cursor.fetchone()[0]
 
-        cursor.execute("INSERT INTO posts (user_id, content, created_at) VALUES (%s, %s, NOW())", (user_id, content))
+        cursor.execute("INSERT INTO posts (user_id, title, content, created_at) VALUES (%s, %s, %s, NOW())", (user_id, title, content))
         conn.commit()
         cursor.close()
 
