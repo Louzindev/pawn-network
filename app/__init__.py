@@ -20,7 +20,14 @@ mysql.init_app(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    conn = mysql.connect()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT posts.id, posts.title, users.username, posts.created_at, posts.content FROM posts JOIN users ON posts.user_id = users.id ORDER BY posts.created_at DESC")
+    posts = cursor.fetchall()
+
+    cursor.close()
+    return render_template('index.html', posts=posts)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -89,7 +96,6 @@ def logout():
 @app.route('/dashboard')
 def dashboard():
     if 'username' in session:
-        username = session['username']
 
         conn = mysql.connect()
         cursor = conn.cursor()
@@ -98,7 +104,7 @@ def dashboard():
         posts = cursor.fetchall()
 
         cursor.close()
-        return render_template('dashboard.html', username=username, posts=posts)
+        return render_template('dashboard.html', posts=posts)
     return redirect('/login')
 
 @app.route('/create_post', methods=['POST'])
