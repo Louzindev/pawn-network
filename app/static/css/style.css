@@ -254,6 +254,11 @@ a{
 
 /*---------------------------------------------------*/
 
+.header-dashboard{
+  display: flex;
+  align-items: center;
+}
+
 .logoname a{
   color: #fff;
   font-size: 2.5vh;
@@ -297,36 +302,35 @@ a{
   text-decoration: underline;
 }
 
-.buttons-interaction-dashboard {
-  display: flex;
-  margin-left: 75%;
-}
-
-.button-interaction-dashboard {
-  display: flex;
-  margin-right: 2vh;
+#manage_noturnmode{
+  font-size: 3.8vh;
+  margin-right: 5vh;
 }
 
 #manage_accounts{
-  font-size: 4vh;
+  font-size: 3.8vh;
   margin-left: 2vh;
-  margin-right: 6vh;
+  margin-right: 2vh;
 }
 
-.logout-button-dashboard,
-.login-button-dashboard,
-.register-button-dashboard{
-  margin-top: 1vh;
+.button-interaction-dashboard{
+  display: flex;
+}
+
+.buttons-interaction-dashboard{
+  margin-left: 73%;
+}
+
+.logout-button-dashboard{
   margin-left: 2vh;
+  margin-top: 1vh;
   font-size: 2vh;
   border-radius: 1vh;
   border: none;
   cursor: pointer;
 }
 
-.logout-button-dashboard a,
-.login-button-dashboard a,
-.register-button-dashboard a{
+.logout-button-dashboard a{
   font-weight: bold;
   color: #fff;
 }
@@ -351,9 +355,7 @@ a{
   background-color: #8b8b8b;
 }
 
-.logout-button-dashboard a:hover,
-.login-button-dashboard a:hover,
-.register-button-dashboard a:hover{
+.logout-button-dashboard a:hover{
   color: #8b8b8b;
 }
 
