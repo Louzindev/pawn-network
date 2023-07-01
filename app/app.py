@@ -5,7 +5,7 @@ import secrets
 from database import Database
 
 # Database application setup
-database = Database('localhost', 'root', 'lw8797', 'social')
+database = Database('localhost', 'root', '', 'social')
 
 # Application Instance
 app = Flask(__name__)
@@ -111,6 +111,16 @@ def logout():
 @app.route('/new_post')
 def new_post():
     return render_template('new_post.html')
+
+## Change password route
+@app.route('/change_password')
+def change_password():
+    return render_template('change_password.html')
+
+## Verify password route
+@app.route('/verify_email')
+def verify_email():
+    return render_template('verify_email.html')
 
 ## Create post route
 @app.route('/create_post', methods=['POST'])
