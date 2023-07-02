@@ -26,7 +26,7 @@ def index():
     return render_template('index.html', posts=posts)
 
 ## Dashboard route
-@app.route('/dasboard')
+@app.route('/dashboard')
 def dashboard():
     if 'username' in session:
 
