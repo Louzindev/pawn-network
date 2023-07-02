@@ -3,6 +3,7 @@ import re
 from utils import security
 import secrets
 from database import Database
+from gmail import Email
 
 # Database application setup
 database = Database('localhost', 'root', '', 'social')
@@ -95,6 +96,7 @@ def register():
             database.close_cursor()
 
             session['username'] = username
+
             return redirect('/dashboard')
         else:
             error = 'O e-mail fornecido contém um padrão inválido.'
