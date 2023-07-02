@@ -23,6 +23,9 @@
     <main>
         <div class="container-verify_token">
             <h1>Verificar email</h1>
+            {% if error %}
+                <p>{{ error }}</p>
+            {% endif %}
             <div class="form">
                 <form method="post" action="{{ url_for('confirm_token') }}">
                     <div class="inputs-login">
