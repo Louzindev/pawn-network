@@ -141,15 +141,32 @@ def change_password():
 @app.route('/verify_code', methods=['POST'])
 def verify_code():
     if 'username' in session:
-         # validar
-        return render_template('verify_code.html')
+        if request.method == 'POST':
+            email = request.form['email']
+            database.connect()
+            database.open_cursor()
+            database.cursor.execute("SELECT email FROM users WHERE username = %s", (username))
+            result = database.cursor.fetchone()
+            database.close_cursor()
+
+            if result is not None:
+                user_email = result[0]
+                if user_email == result[0]:
+                    return render_template('verify_code.html')
+                else:
+                    error = 'O e-mail fornecido não está vinculado a sua conta.'
+                    return render_template('change_password.html', error=error)
+            else:
+                error = 'Não foi encontrado nenhum e-mail vinculado a sua conta.'
+                return render_template('change_password.html', error=error)
+            
     return render_template('register.html')
 
 @app.route('/confirm_code', methods=['POST'])
 def confirm_code():
     if 'username' in session:
         # validar
-        return render_template('dashboard.html')#Redirecionar pra pagina de configuração do usuário
+        return render_template('dashboard.html') #Redirecionar pra pagina de configuração do usuário
     return render_template('register.html')
 
 ## Verify email route
