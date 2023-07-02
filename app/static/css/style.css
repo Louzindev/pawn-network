@@ -475,7 +475,7 @@ textarea {
 }
 
 /*-------------------------------------*/
-.container-verify_token {
+.container-verify_code {
   max-width: 50vh;
   height: 60vh;
   margin: 0 auto;
@@ -486,7 +486,7 @@ textarea {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.container-verify_token h1 {
+.container-verify_code h1 {
 
   font-size: 32px;
   padding-top: 1vh;
@@ -494,7 +494,7 @@ textarea {
   text-align: center;
 }
 
-.container-verify_token p {
+.container-verify_code p {
   font-size: 18px;
   color: #555;
   padding-top: 1vh;

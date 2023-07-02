@@ -127,22 +127,30 @@ def logout():
 ## New post route
 @app.route('/new_post')
 def new_post():
-    return render_template('new_post.html')
+    if 'username' in session:
+        return render_template('new_post.html')
+    return render_template('register.html')
 
 ## Change password route
 @app.route('/change_password')
 def change_password():
-    return render_template('change_password.html')
+    if 'username' in session:
+        return render_template('change_password.html')
+    return render_template('register.html')
 
-@app.route('/verify_token', methods=['POST'])
-def verify_token():
-    # validar
-    return render_template('verify_token.html')
+@app.route('/verify_code', methods=['POST'])
+def verify_code():
+    if 'username' in session:
+         # validar
+        return render_template('verify_code.html')
+    return render_template('register.html')
 
-@app.route('/confirm_token', methods=['POST'])
+@app.route('/confirm_code', methods=['POST'])
 def confirm_token():
-    # validar
-    return render_template('dashboard.html')
+    if 'username' in session:
+        # validar
+        return render_template('dashboard.html')#Redirecionar pra pagina de configuração do usuário
+    return render_template('register.html')
 
 ## Verify email route
 @app.route('/verify_email/<username>/<token>')
