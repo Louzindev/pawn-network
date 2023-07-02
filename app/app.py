@@ -134,6 +134,10 @@ def new_post():
 def change_password():
     return render_template('change_password.html')
 
+@app.route('/verify_token')
+def verify_token():
+    return render_template('verify_token.html')
+
 ## Verify email route
 @app.route('/verify_email/<username>/<token>')
 def verify_email(username, token):
