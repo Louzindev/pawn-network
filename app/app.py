@@ -5,6 +5,7 @@ from utils import security
 import secrets
 from database import Database
 from gmail import Email
+import time
 
 # Database application setup
 database = Database('localhost', 'root', '', 'social')
@@ -142,21 +143,36 @@ def change_password():
 def verify_code():
     if 'username' in session:
         if request.method == 'POST':
+            username = session['username']
             email = request.form['email']
             database.connect()
             database.open_cursor()
             database.cursor.execute("SELECT email FROM users WHERE username = %s", (username))
-            result = database.cursor.fetchone()
-            database.close_cursor()
+            result = database.cursor.fetchone() 
 
             if result is not None:
                 user_email = result[0]
-                if user_email == result[0]:
+                if user_email == email:
+                    email_sender = Email()
+                    temp_code = email_sender.generate_code()
+                    database.cursor.execute("UPDATE users SET temp_code = %s, time_code = %s WHERE username = %s", (temp_code, time.time(), username))
+                    database.connection.commit()
+                    database.close_cursor()
+
+                    email_sender.send_email('Código de verificação', f"""
+                        <h1>Uma solicitação de mudança de senha foi requisitada.</h1>
+                        <p>Se não foi você que requisitou a mudança, ignore o e-mail e proteja sua conta.</p>
+                        <h2><stronger>Código de verificação:</stronger></h2>
+                        <h2 style="color: #00d7fd;">{temp_code}</h2>
+                        <p>Atenciosamente,</p>
+                        <p><strong>Pawn Network.</strong></p>""", user_email)
                     return render_template('verify_code.html')
                 else:
+                    database.close_cursor()
                     error = 'O e-mail fornecido não está vinculado a sua conta.'
                     return render_template('change_password.html', error=error)
             else:
+                database.close_cursor()
                 error = 'Não foi encontrado nenhum e-mail vinculado a sua conta.'
                 return render_template('change_password.html', error=error)
             
@@ -165,9 +181,29 @@ def verify_code():
 @app.route('/confirm_code', methods=['POST'])
 def confirm_code():
     if 'username' in session:
-        # validar
-        return render_template('dashboard.html') #Redirecionar pra pagina de configuração do usuário
-    return render_template('register.html')
+        if request.method == 'POST':
+            username = session['username']
+            code = request.form['code']
+            password = request.form['password']
+
+            database.connect()
+            database.open_cursor()
+            database.cursor.execute("SELECT * FROM users WHERE username = %s", (username))
+            result = database.cursor.fetchone()
+
+            if result[6] == code and result[7] < time.time()+300:
+                hashed_password = security.hash_password(password)
+                database.cursor.execute("UPDATE users SET password = %s, temp_code = 'Null', time_code = '0' WHERE username = %s", (hashed_password, username))
+                database.connection.commit()
+                database.close_cursor()
+                session.pop('username', None)
+                msg = 'Senha alterada com sucesso, logue novamente.'
+                return render_template('login.html', error=msg)
+            else:
+                database.close_cursor()
+                error = 'Código inválido ou expirado.'
+                return render_template('verify_code.html', error=error)
+    return render_template('login.html')
 
 ## Verify email route
 @app.route('/verify_email/<username>/<token>')

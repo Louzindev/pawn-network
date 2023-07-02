@@ -4,6 +4,8 @@ import secrets
 from email.mime.text import MIMEText
 from email.header import Header
 from utils import configs  # Configurações do GMAIL
+import random
+import string
 
 class Email:
     def __init__(self):
@@ -13,6 +15,11 @@ class Email:
     def generate_token(self):
         token = secrets.token_urlsafe(16)
         return token
+
+    def generate_code(self):
+        code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=3))
+        code += '-' + ''.join(random.choices(string.ascii_uppercase + string.digits, k=3))
+        return code
 
     def send_email(self, subject, body, dest):
         msg = MIMEText(body, 'html', 'utf-8')
