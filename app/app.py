@@ -139,6 +139,7 @@ def change_password():
         return render_template('change_password.html')
     return render_template('register.html')
 
+## Email validation to change  route
 @app.route('/verify_code', methods=['POST'])
 def verify_code():
     if 'username' in session:
@@ -178,6 +179,7 @@ def verify_code():
             
     return render_template('register.html')
 
+## Confirm code and change password route
 @app.route('/confirm_code', methods=['POST'])
 def confirm_code():
     if 'username' in session:
