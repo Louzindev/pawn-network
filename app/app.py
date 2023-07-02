@@ -146,7 +146,7 @@ def verify_code():
     return render_template('register.html')
 
 @app.route('/confirm_code', methods=['POST'])
-def confirm_token():
+def confirm_code():
     if 'username' in session:
         # validar
         return render_template('dashboard.html')#Redirecionar pra pagina de configuração do usuário
