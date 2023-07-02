@@ -4,7 +4,6 @@ import secrets
 from email.mime.text import MIMEText
 from email.header import Header
 from utils import configs  # Configurações do GMAIL
-from datetime import datetime, timedelta
 
 class Email:
     def __init__(self):
