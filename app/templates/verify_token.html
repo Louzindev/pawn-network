@@ -21,7 +21,7 @@
     </header>
 
     <main>
-        <div class="container-changepass">
+        <div class="container-verify_token">
             <h1>Verificar email</h1>
             <div class="form">
                 <form method="post" action="{{ url_for('confirm_token') }}">
@@ -30,8 +30,16 @@
                             <label for="code">Digite o codigo que foi enviado para o seu email:</label>
                             <input type="text" name="code" required>
                         </div>
+                        <div class="input-login">
+                            <label for="code">Digite a nova senha:</label>
+                            <input type="password" name="code" required>
+                        </div>
+                        <div class="input-login">
+                            <label for="code">Confirme a nova senha:</label>
+                            <input type="password" name="code" required>
+                        </div>
                         <div class="button-login">
-                            <button type="submit">Verificar email</button>
+                            <button type="submit">Alterar senha</button>
                         </div>
                     </div>
                 </form>
