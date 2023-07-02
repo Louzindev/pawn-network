@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pawn Network - Verificar email</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+<body>
+
+    <header>
+        <div class="header-login">
+            <h1 class="logoname"><a href="{{ url_for('index') }}">Pawn Network</a></h1>
+            <div class="toggle-modenoturn-login">
+                <span class="material-symbols-outlined">
+                    dark_mode
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container-changepass">
+            <h1>Verificar email</h1>
+            <div class="form">
+                <form method="post" action="{{ url_for('...') }}">
+                    <div class="inputs-login">
+                        <div class="input-login">
+                            <label for="code">Digite o codigo que foi enviado para o seu email:</label>
+                            <input type="text" name="code" required>
+                        </div>
+                        <div class="button-login">
+                            <button type="submit">Verificar email</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="redirectpage-login">
+                    <p>Lembrou a senha? <a href="{{ url_for('login') }}">Clique aqui para entrar</a>.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <p>&copy; 2023 Pawn Network. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
