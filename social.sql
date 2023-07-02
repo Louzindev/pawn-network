@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Jun-2023 às 15:22
+-- Tempo de geração: 02-Jul-2023 às 08:25
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 7.4.29
 
@@ -45,8 +45,14 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(54) NOT NULL,
   `password` varchar(61) NOT NULL,
-  `email` varchar(256) NOT NULL
+  `email` varchar(256) NOT NULL,
+  `verified` int(1) NOT NULL DEFAULT 0,
+  `temp_token` varchar(54) NOT NULL DEFAULT 'Null'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Índices para tabelas despejadas
+--
 
 --
 -- Índices para tabela `posts`
@@ -75,7 +81,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- Restrições para despejos de tabelas
