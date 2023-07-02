@@ -474,3 +474,30 @@ textarea {
   text-align: center;
 }
 
+/*-------------------------------------*/
+.container-verify_token {
+  max-width: 50vh;
+  height: 60vh;
+  margin: 0 auto;
+  margin-top: 15vh;
+  background-color: #fff;
+  border-radius: 2vh;
+  padding: 2vh;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.container-verify_token h1 {
+
+  font-size: 32px;
+  padding-top: 1vh;
+  color: #333;
+  text-align: center;
+}
+
+.container-verify_token p {
+  font-size: 18px;
+  color: #555;
+  padding-top: 1vh;
+  text-align: center;
+}
+
