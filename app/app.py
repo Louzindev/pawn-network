@@ -97,6 +97,16 @@ def register():
 
             session['username'] = username
 
+            email_sender = Email()
+            email_sender.send_email('Bem-vindo à Pawn Network', f"""
+                <h1>Olá <strong>{username}</strong>,</h1>
+                <p>Estamos muito felizes pelo seu interesse em fazer parte da nossa comunidade.</p>
+                <p>Esperamos que você adquira e partilhe muito conhecimento e, a partir disso, ajude novos usuários.</p>
+                <p>Caso deseje, clique no botão abaixo para conhecer a nossa dashboard.</p>
+                <button><a href=http://127.0.0.1:5000/dashboard>Dashboard</button>
+                <p>Atenciosamente,</p>
+                <p><strong>Pawn Network.</strong></p>""", email)
+
             return redirect('/dashboard')
         else:
             error = 'O e-mail fornecido contém um padrão inválido.'
